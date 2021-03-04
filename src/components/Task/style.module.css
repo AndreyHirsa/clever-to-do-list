@@ -1,0 +1,25 @@
+.buttonDone{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.description{
+    width: 100%;
+}
+  
+  
+  .completed {
+    text-decoration: line-through;
+    color: #9699a3;
+  }
+
+.taskContainer{
+    height: 40px;
+    border-bottom: 1px solid #9699a3;
+    display: flex;
+    align-items: center;
+}  

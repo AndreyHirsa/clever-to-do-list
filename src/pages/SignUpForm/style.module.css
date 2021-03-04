@@ -1,0 +1,51 @@
+.form {
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    width: 300px;
+    padding:55px 10px 10px 10px;
+    height: 270px;
+  }
+  
+  .formContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  button{
+      width: 100%;
+  }
+  
+  .close{
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      width: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 10px;
+      top:10px
+  }
+  
+  .message{
+      color: crimson;
+      font-size: 14px;
+      height: 20px;
+  }
+  
+  .successMessage{
+      color: #00c853;
+      font-size: 14px;
+      height: 20px;
+  }
+  
+  .closeIcon{
+      color: crimson;
+  }

@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router';
 import './App.css';
+import { HeaderNavigation } from './components/HeaderNavigation';
+import { HomePage } from './pages/HomePage';
+import { LogInForm } from './pages/LogInForm';
+import { SignUpForm } from './pages/SignUpForm';
+import { Tasks } from './pages/Tasks';
+import { RedirectHomeRoute } from './routers/RedirectToHomeRoute';
+import { RedirectToTasksRoute } from './routers/RedirectToTasksRoute';
+import { useUserState } from './selectors/stateSelectors';
 
 function App() {
+  const user=useUserState()
+  console.log(user)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeaderNavigation/>
+      <Route exact path="/home_page" component={HomePage} />
+      <Route exact path="/sign_up" component={SignUpForm} />
+      <RedirectToTasksRoute exact path="/log_in" component={LogInForm} />
+      <RedirectHomeRoute exact path="/tasks" component={Tasks} />
     </div>
   );
 }

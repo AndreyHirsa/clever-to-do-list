@@ -1,0 +1,23 @@
+.form {
+    margin: 0;
+    width: 500px;
+    height: 40px;
+    display: flex;
+  }
+  
+  .inputText {
+    width: 100%;
+  }
+  
+  .buttonAdd {
+    transition: 0.2s;
+    padding: 0;
+    width: 50px;
+    border: none;
+    background-color: #096ad6;
+    color: #ffffff;
+  }
+  
+  .disabled {
+    background-color: #9699a3;
+  }
