@@ -1,25 +1,33 @@
 import format from 'date-fns/format';
 import styles from './style.module.css';
 import { add, isBefore, isSameDay, sub } from 'date-fns';
-import { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { calendarBuild } from './build';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import { useUserEmail } from '../../selectors/stateSelectors';
+import {useUserState} from '../../selectors/stateSelectors';
+import {Context} from "../../context";
 
 export const Calendar=()=>{
     const [calendar,setCalendar]=useState<any>([])
-    const [currentDay,setCurrentDay]=useState<any>(new Date())
+    //const [currentDay,setCurrentDay]=useState<any>(new Date())
+    const {currentDay,setUserData,userData,setCurrentDay,inputText}:any=useContext(Context)
 
-    const userEmail=useUserEmail()
+    const userState=useUserState()
 
     useEffect(()=>{
-        console.log(userEmail)
         setCalendar(calendarBuild(currentDay))
     },[currentDay])
     
     const isSelected=(day:any)=>{
         return isSameDay(currentDay,day)
+    }
+
+    const updateDay=(day:any):any=>{
+        let dayNumber=format(day,"d");
+        const dataToUpdate={...userData,day:dayNumber}
+        setUserData(dataToUpdate)
+        setCurrentDay(day)
     }
 
     const isToday=(day:any)=>{
@@ -58,7 +66,7 @@ export const Calendar=()=>{
             </div>
             <div className={styles.calendar}>{
             calendar.map((week:any) => <div>{
-                week.map((day:any)=><button className={styles.day} onClick={()=>setCurrentDay(day)}>
+                week.map((day:any)=><button className={styles.day} onClick={()=>updateDay(day)}>
                     <div className={dayStyles(day)}>{format(day,"d")}</div></button>)}</div>)
         }</div>
         </div>

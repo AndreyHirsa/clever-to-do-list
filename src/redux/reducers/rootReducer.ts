@@ -3,6 +3,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { signUpReducer } from './signUpReducer';
 import { userStateReducer } from './userStateReducer';
+import {tasksDataReducer} from "./tasksDataReducer";
 
 const  persistConfig={
     key:'root',
@@ -13,6 +14,7 @@ const  persistConfig={
 const rootReducer=combineReducers({
     signUpReducer,
     userStateReducer,
+    tasksDataReducer,
 })
 
 export const persistedRootReducer = persistReducer(persistConfig,rootReducer)

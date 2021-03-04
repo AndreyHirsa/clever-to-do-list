@@ -5,3 +5,6 @@ export const LOG_IN="LOG_IN";
 export const LOG_IN_SUCCESS="LOG_IN_SUCCESS";
 export const LOG_IN_FAILURE="LOG_IN_FAILURE";
 export const LOG_OUT="LOG_OUT";
+export const GET_DATA="GET_DATA";
+export const GET_DATA_SUCCESS="GET_DATA_SUCCESS";
+export const GET_DATA_FAILURE="GET_DATA_FAILUER"

@@ -8,12 +8,8 @@ import { SignUpForm } from './pages/SignUpForm';
 import { Tasks } from './pages/Tasks';
 import { RedirectHomeRoute } from './routers/RedirectToHomeRoute';
 import { RedirectToTasksRoute } from './routers/RedirectToTasksRoute';
-import { useUserState } from './selectors/stateSelectors';
 
 function App() {
-  const user=useUserState()
-  console.log(user)
-
   return (
     <div className="App">
       <HeaderNavigation/>
