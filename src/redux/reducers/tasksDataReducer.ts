@@ -1,8 +1,9 @@
+import { ITodo } from "../../interfaces/ITodo";
 import {GET_DATA_SUCCESS} from "../actions/constants";
 
-const tasksInitialState:any=[]
+const tasksInitialState:ITodo[]=[]
 
-export const tasksDataReducer=(state:any=tasksInitialState,action:any):any=>{
+export const tasksDataReducer=(state:ITodo[]=tasksInitialState,action:any):ITodo[]=>{
     switch (action.type) {
         case GET_DATA_SUCCESS:
             return action.payload

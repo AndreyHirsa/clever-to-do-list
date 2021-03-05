@@ -11,7 +11,7 @@ export const SignUpForm=()=>{
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     
-    const errorMessage:any=useSelector((state:any)=>state.signUpReducer.error)
+    const errorMessage:string=useSelector((state:any)=>state.signUpReducer.error)
 
     function emailHandler(e: React.ChangeEvent<HTMLInputElement>): void {
         setEmail(e.target.value);

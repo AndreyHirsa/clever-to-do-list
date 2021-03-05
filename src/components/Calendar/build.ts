@@ -1,8 +1,9 @@
 import { startOfISOWeek, startOfMonth, lastDayOfISOWeek, lastDayOfMonth, addDays, isBefore } from "date-fns"
-export const calendarBuild=(currentDay:any)=>{
+
+export const calendarBuild=(currentDay:Date):Date[][]=>{
     const startDay=startOfISOWeek(startOfMonth(currentDay))
     const lastDay=lastDayOfISOWeek(lastDayOfMonth(currentDay))
-    const calendar:any=[]
+    const calendar=[]
     let result=startDay
 
         while(isBefore(result,lastDay)){

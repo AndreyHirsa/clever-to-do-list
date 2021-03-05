@@ -10,7 +10,12 @@
 .description{
     width: 100%;
 }
-  
+ 
+
+.done{
+  width: 100%;
+  text-decoration: line-through;
+}
   
   .completed {
     text-decoration: line-through;

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react"
+import React, {useContext, useEffect, useMemo} from "react"
 import { Task } from "../Task"
 import { TaskForm } from "../TaskForm"
 import styles from "./style.module.css";
@@ -9,23 +9,20 @@ import {getData} from "../../redux/actions/getTasksDataActions";
 import {Context} from "../../context";
 
 export const TasksContainer=()=>{
+    const {userData}:any=useContext(Context)
     const data=useSelector((state:any):any=>state.tasksDataReducer)
-    const {userData,currentDate}:any=useContext(Context)
     const dispatch=useDispatch()
+
     useEffect(()=>{
-        console.log(userData)
-                dispatch(getData(userData))
-    },[userData])
+        dispatch(getData(userData))
+    },[dispatch, userData])
+
     return(
         <div className={styles.taskContainer}>
         <TaskForm/>
             {data.map((todo:any)=>{
-                return <Task todoDesc={todo.value}/>
+                return <Task id={todo.id} value={todo.value} done={todo.done}/>
             })}
         </div>
     )
 }
-
-/*{data.map((todo:any)=>{
-    return <Task todo={todo}/>
-})}*/

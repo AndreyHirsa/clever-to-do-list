@@ -8,8 +8,9 @@ import format from "date-fns/format";
 
 export const Tasks:React.FC =():JSX.Element=>{
     const userState=useUserState()
-    const [currentDay,setCurrentDay]=useState<any>(new Date())
+    const [currentDay,setCurrentDay]=useState(new Date())
     const [inputText, setInputText] = useState("")
+
     const [userData,setUserData]=useState({
         userId:userState.user.uid,
         year:format(currentDay, "yyy"),

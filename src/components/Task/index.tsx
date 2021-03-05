@@ -1,17 +1,26 @@
 import DoneIcon from '@material-ui/icons/Done';
 import styles from "./style.module.css";
-import {useUserData} from "../../selectors/stateSelectors";
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from '../../context';
+import { patchData } from '../../redux/actions/patchTasksDataActions';
+import { useDispatch } from 'react-redux';
+import { ITodo } from '../../interfaces/ITodo';
+import { IUserData } from '../../interfaces/IUserData';
 
-export const Task=({todoDesc}:any)=>{
-    const data=useUserData()
+export const Task=({value,done,id}:ITodo)=>{
+    const {userData}:any=useContext(Context)
+    const dispatch=useDispatch()
+    const patchTasksData=():void=>{
+        console.log(userData)
+       dispatch(patchData({...userData,done,id}))
+    }
     return(
     <div className={styles.taskContainer}>
-      <div className={styles.description}>
-          {todoDesc}
+      <div className={!done?styles.description:styles.done}>
+          {value}
       </div> 
       <div>
-          <button className={styles.buttonDone}><DoneIcon/></button>
+          <button className={styles.buttonDone} onClick={patchTasksData}><DoneIcon/></button>
       </div>         
     </div> 
     )  
