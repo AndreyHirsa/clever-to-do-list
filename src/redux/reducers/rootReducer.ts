@@ -1,20 +1,22 @@
-import { combineReducers } from "redux";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { signUpReducer } from './signUpReducer';
 import { userStateReducer } from './userStateReducer';
-import {tasksDataReducer} from "./tasksDataReducer";
+import { tasksDataReducer } from './tasksDataReducer';
+import { userDataReducer } from './userDataReducer';
 
-const  persistConfig={
-    key:'root',
-    storage,
-    whitelist:['userStateReducer'],
-}
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['userStateReducer'],
+};
 
-const rootReducer=combineReducers({
-    signUpReducer,
-    userStateReducer,
-    tasksDataReducer,
-})
+const rootReducer = combineReducers({
+  signUpReducer,
+  userStateReducer,
+  tasksDataReducer,
+  userDataReducer,
+});
 
-export const persistedRootReducer = persistReducer(persistConfig,rootReducer)
+export const persistedRootReducer = persistReducer(persistConfig, rootReducer);

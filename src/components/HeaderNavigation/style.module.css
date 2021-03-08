@@ -6,3 +6,21 @@
     padding: 20px 30px;
     background-color: blueviolet;
 }
+
+.buttonContainer{
+    display: flex;
+}
+
+.buttonRedirect{
+    cursor: pointer;
+    outline: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+}
+
+
+
+

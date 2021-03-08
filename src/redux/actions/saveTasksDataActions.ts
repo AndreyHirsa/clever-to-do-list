@@ -1,8 +1,6 @@
-import { SAVE_DATA } from "./constants"
+import { SAVE_DATA } from './constants';
 
-export const saveData=(data:any)=>{
-    return{
-        type:SAVE_DATA,
-        payload:data
-    }
-}
+export const saveData = (data:any) => ({
+  type: SAVE_DATA,
+  payload: data,
+});

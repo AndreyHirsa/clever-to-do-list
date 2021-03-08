@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.fa-check-circle{
+  color: #00c853;
+}
+
+.fa-plus-circle{
+  color: #096ad6;
+}
+
+button{
+  text-decoration: none;
+}

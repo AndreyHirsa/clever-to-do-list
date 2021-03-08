@@ -7,12 +7,13 @@
   
   .inputText {
     width: 100%;
+      border: none;
   }
   
   .buttonAdd {
     transition: 0.2s;
     padding: 0;
-    width: 50px;
+    width: 100px;
     border: none;
     background-color: #096ad6;
     color: #ffffff;

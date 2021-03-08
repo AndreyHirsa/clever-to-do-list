@@ -6,5 +6,3 @@ export interface IUserData{
      value:string,
      taskId:number
 }
-
-

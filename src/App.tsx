@@ -12,7 +12,7 @@ import { RedirectToTasksRoute } from './routers/RedirectToTasksRoute';
 function App() {
   return (
     <div className="App">
-      <HeaderNavigation/>
+      <HeaderNavigation />
       <Route exact path="/home_page" component={HomePage} />
       <Route exact path="/sign_up" component={SignUpForm} />
       <RedirectToTasksRoute exact path="/log_in" component={LogInForm} />

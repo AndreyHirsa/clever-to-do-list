@@ -1,62 +1,66 @@
-import { Button, TextField } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Button, TextField } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
+import { useForm } from 'react-hook-form';
+import Alert from '@material-ui/lab/Alert';
 import styles from './style.module.css';
-import { signUp } from "../../redux/actions/signUpActions";
+import { signUp, signUpFailure } from '../../redux/actions/signUpActions';
 
-export const SignUpForm=()=>{
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
-    
-    const errorMessage:string=useSelector((state:any)=>state.signUpReducer.error)
+export const SignUpForm = () => {
+  const dispatch = useDispatch();
+  const errorMessage:string = useSelector((state:any) => state.signUpReducer.error);
+  const { register, handleSubmit, errors } = useForm();
 
-    function emailHandler(e: React.ChangeEvent<HTMLInputElement>): void {
-        setEmail(e.target.value);
-    }
+  useEffect(() => {
+    dispatch(signUpFailure(''));
+  }, []);
 
-    function passwordHandler(e: React.ChangeEvent<HTMLInputElement>): void {
-        setPassword(e.target.value);
-    }
+  function signUpUser(data:any): void {
+    dispatch(signUp(data.email, data.password));
+  }
 
-    function signUpUser(
-        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ): void {
-        e.preventDefault();
-        console.log(email,password)
-        dispatch(signUp(email, password));
-    }
-   
-    return (
-        <div className={styles.formContainer}>
-            <form className={styles.form}>
-                <Link to="/">
-                    <button type="button" className={styles.close}>
-                        <CloseIcon className={styles.closeIcon} />
-                    </button>
-                </Link>
-                <TextField
-                    className={styles.formInput}
-                    label="Email"
-                    variant="outlined"
-                    value={email}
-                    onChange={emailHandler}
-                    type="email"
-                    required
-                />
-                <TextField
-                    label="Password"
-                    variant="outlined"
-                    value={password}
-                    onChange={passwordHandler}
-                    type="password"
-                    required
-                />
-                <p>{errorMessage}</p>
-                <Button onClick={signUpUser}>Sign Up</Button>
-            </form>
-        </div>)
-    
-}
+  return (
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSubmit(signUpUser)} className={styles.form}>
+        <h3>SIGN UP</h3>
+        <Link to="/">
+          <button type="button" className={styles.close}>
+            <CloseIcon className={styles.closeIcon} />
+          </button>
+        </Link>
+        <TextField
+          className={styles.formInput}
+          label="Email"
+          variant="outlined"
+          name="email"
+          inputRef={register({
+            required: 'Required',
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'invalid email address',
+            },
+          })}
+        />
+        {errors.email && <Alert severity="error">{errors.email.message}</Alert>}
+        <TextField
+          label="Password"
+          variant="outlined"
+          type="password"
+          name="password"
+          inputRef={register({
+            required: 'Required',
+            minLength: {
+              value: 8,
+              message: 'must be 8 characters at least',
+            },
+          })}
+        />
+        {errors.password && <Alert severity="error">{errors.password.message}</Alert>}
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        <Button className={styles.buttonSubmit} type="submit">submit</Button>
+      </form>
+    </div>
+  );
+};
