@@ -7,14 +7,14 @@ import { getData } from '../../redux/actions/getTasksDataActions';
 import { useUserDataState } from '../../selectors/stateSelectors';
 
 export const Task = React.memo(({ value, done, id }:ITodo) => {
-  const userData = useUserDataState()
+  const userData = useUserDataState();
   const dispatch = useDispatch();
 
   const dataToPatch = {
     ...userData, taskId: id, value,
   };
 
-  const patchTasksData = ():void => {
+  const patchTasksData = () => {
     dispatch(patchData({ ...dataToPatch, done }));
     dispatch(getData(dataToPatch));
   };

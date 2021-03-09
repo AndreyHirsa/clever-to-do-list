@@ -7,7 +7,7 @@ export const signUpInitialState:ISignUpInitialState = { isSignedUp: false, error
 export const signUpReducer = (
   state = signUpInitialState,
   action: SignUpActionsType,
-): typeof signUpInitialState => {
+): ISignUpInitialState => {
   switch (action.type) {
     case SIGN_UP_SUCCESS:
       return { isSignedUp: action.payload, error: null };

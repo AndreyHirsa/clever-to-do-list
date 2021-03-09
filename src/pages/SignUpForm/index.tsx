@@ -7,17 +7,18 @@ import { useForm } from 'react-hook-form';
 import Alert from '@material-ui/lab/Alert';
 import styles from './style.module.css';
 import { signUp, signUpFailure } from '../../redux/actions/signUpActions';
+import { useSignUpError } from '../../selectors/stateSelectors';
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const errorMessage:string = useSelector((state:any) => state.signUpReducer.error);
+  const errorMessage = useSignUpError();
   const { register, handleSubmit, errors } = useForm();
 
   useEffect(() => {
-    dispatch(signUpFailure(''));
+    if (errorMessage) dispatch(signUpFailure(''));
   }, []);
 
-  function signUpUser(data:any): void {
+  function signUpUser(data:Record<string, string>): void {
     dispatch(signUp(data.email, data.password));
   }
 

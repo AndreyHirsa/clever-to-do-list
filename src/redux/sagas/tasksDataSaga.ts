@@ -3,6 +3,7 @@ import {
   CallEffect,
   ForkEffect,
   put,
+  PutEffect,
   takeEvery,
   takeLatest,
 } from 'redux-saga/effects';
@@ -12,17 +13,17 @@ import {
 import { firebaseService, rsf } from '../../services/firebaseService';
 import { getData, getDataSuccess } from '../actions/getTasksDataActions';
 import { IUserData } from '../../interfaces/IUserData';
-import { TasksDataActionTypes } from '../../interfaces/ITodo';
+import { IGetData, ITodo, TasksDataActionTypes } from '../../interfaces/ITodo';
 
 function* getDataSaga({
   payload: {
     userId, year, month, day,
   },
-}:any): any {
+}:IGetData): Generator<CallEffect<any> | PutEffect<TasksDataActionTypes>, void, ITodo[]> {
   try {
-    const data = yield call(rsf.database.read, `${userId}/${year}/${month}/${day}/`);
+    const data:ITodo[] = yield call(rsf.database.read, `${userId}/${year}/${month}/${day}/`);
 
-    yield put(getDataSuccess(Object.keys(data).map((key) => data[key])));
+    yield put(getDataSuccess(Object.keys(data).map((key:any) => data[key])));
   } catch {
     yield put(getDataSuccess([]));
   }
@@ -32,7 +33,7 @@ function* patchDataSaga({
   payload: {
     userId, taskId, year, month, day, done,
   },
-}:any):any {
+}: {payload: IUserData, type: string}): Generator<CallEffect<any>, void, unknown> {
   try {
     yield call(rsf.database.patch, `${userId}/${year}/${month}/${day}/${taskId}`, {
       done: !done,
@@ -42,7 +43,7 @@ function* patchDataSaga({
   }
 }
 
-function* saveTasksDataSaga({ payload }:any):any {
+function* saveTasksDataSaga({ payload }: {payload: IUserData, type: string}): Generator<CallEffect<unknown>, void, unknown> {
   try {
     yield call(firebaseService.saveTasksDataService(payload));
   } catch (error) {

@@ -7,7 +7,7 @@ export const userInitialState: IUserInitialState = { user: null, error: null };
 export function userStateReducer(
   state = userInitialState,
   action: UserStateActionsType,
-): typeof userInitialState {
+): IUserInitialState {
   switch (action.type) {
     case LOG_IN_SUCCESS:
       return { ...state, user: action.payload };

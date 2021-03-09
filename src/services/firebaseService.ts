@@ -12,13 +12,13 @@ const firebaseConfig = {
   appId: '1:161805012135:web:0b02d34bbeac8bfe531f82',
 };
 
-const firebaseApp:any = firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-export const firebaseService = {
+export const firebaseService: any = {
 
-  saveTasksDataService: (userData:IUserData):any => {
+  saveTasksDataService(userData: IUserData) {
     try {
-      firebase
+      return firebase
         .database()
         .ref()
         .child(`${userData.userId}`)
@@ -28,7 +28,7 @@ export const firebaseService = {
         .child(`${userData.taskId}`)
         .set({ value: userData.value, done: false, id: userData.taskId });
     } catch (error) {
-      console.log(error.message);
+      return console.log(error.message);
     }
   },
 };

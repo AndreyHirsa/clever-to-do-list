@@ -7,10 +7,10 @@ import { useUserDataState } from '../../selectors/stateSelectors';
 
 export const TaskForm = () => {
   const dispatch = useDispatch();
-  const userData = useUserDataState()
+  const userData = useUserDataState();
   const [inputText, setInputText] = useState('');
 
-  const generateId =()=> String(new Date().getTime());
+  const generateId = () => String(new Date().getTime());
 
   const userDataToUpdate = { ...userData, taskId: generateId(), value: inputText };
 

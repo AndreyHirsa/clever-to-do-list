@@ -10,18 +10,17 @@ import { ITodo } from '../../interfaces/ITodo';
 
 export const TasksContainer = () => {
   const userState = useUserState();
-  const userData = useUserDataState()
-  const data = useTasksDataState()
+  const userData = useUserDataState();
+  const data = useTasksDataState();
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(patchUserData({ userId: userState!.user.uid }));
   }, [userState]);
 
   useEffect(() => {
-    console.log('frfrfrf')
-    //if (userData.userId) dispatch(getData(userData));
-    dispatch(getData(userData))
+    if (userData.userId) dispatch(getData(userData));
+    dispatch(getData(userData));
   }, [userData]);
 
   return (
