@@ -23,10 +23,12 @@ export const Calendar = () => {
 
   const isSelected = (day:Date) => isSameDay(currentDay, day);
 
-  const updateDay = (day:Date) => {
-    const dayNumber = format(day, 'd');
-    dispatch(patchUserData({ day: dayNumber }));
-    setCurrentDay(day);
+  const updateDay = (newDay:Date) => {
+    const day = format(newDay, 'd');
+    const month = format(newDay, 'MMMM');
+    const year = format(newDay, 'yyy');
+    dispatch(patchUserData({ day, year, month }));
+    setCurrentDay(newDay);
   };
 
   const isToday = (day:Date) => isSameDay(new Date(), day);
@@ -41,9 +43,9 @@ export const Calendar = () => {
     return '';
   };
 
-  const currMonth = () => format(calendarDate, 'MMMM');
+  const currMonth = format(calendarDate, 'MMMM');
 
-  const currYear = () => format(calendarDate, 'yyy');
+  const currYear = format(calendarDate, 'yyy');
 
   const prevMonth = () => {
     const newDate = sub(calendarDate, { months: 1 });
@@ -60,13 +62,13 @@ export const Calendar = () => {
       <div className={styles.header}>
         <ArrowLeftIcon onClick={prevMonth} className={styles.icon} />
         <div>
-          {`${currMonth()} ${currYear()}`}
+          {`${currMonth} ${currYear}`}
         </div>
         <ArrowRightIcon onClick={nextMonth} className={styles.icon} />
       </div>
       <div className={styles.calendar}>
         <div className={styles.dayNames}>
-          {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day) => <div>{day}</div>)}
+          {['M', 'T', 'W', 'T', 'F', 'S','S'].map((day) => <div>{day}</div>)}
         </div>
         {
             calendar.map((week:Date[]) => (

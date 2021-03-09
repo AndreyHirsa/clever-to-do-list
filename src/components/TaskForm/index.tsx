@@ -3,24 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './style.module.css';
 import { saveData } from '../../redux/actions/saveTasksDataActions';
 import { patchUserData } from '../../redux/actions/userDataActions';
+import { useUserDataState } from '../../selectors/stateSelectors';
 
 export const TaskForm = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((state:any):any => state.userDataReducer);
+  const userData = useUserDataState()
   const [inputText, setInputText] = useState('');
 
-  const generateId = () => String(new Date().getTime());
+  const generateId =()=> String(new Date().getTime());
 
-  const userDataToUpdate = { ...userData, taskId: generateId, value: inputText };
+  const userDataToUpdate = { ...userData, taskId: generateId(), value: inputText };
 
   const inputTextHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setInputText(value);
   };
 
-  const saveTasksData = (e:any) => {
+  const saveTasksData = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    dispatch(patchUserData({ taskId: generateId, value: inputText }));
+    dispatch(patchUserData({ taskId: generateId(), value: inputText }));
     dispatch(saveData(userDataToUpdate));
     setInputText('');
   };

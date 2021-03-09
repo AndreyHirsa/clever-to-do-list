@@ -4,9 +4,10 @@ import styles from './style.module.css';
 import { patchData } from '../../redux/actions/patchTasksDataActions';
 import { ITodo } from '../../interfaces/ITodo';
 import { getData } from '../../redux/actions/getTasksDataActions';
+import { useUserDataState } from '../../selectors/stateSelectors';
 
 export const Task = React.memo(({ value, done, id }:ITodo) => {
-  const userData = useSelector((state:any):any => state.userDataReducer);
+  const userData = useUserDataState()
   const dispatch = useDispatch();
 
   const dataToPatch = {

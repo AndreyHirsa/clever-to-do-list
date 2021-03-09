@@ -10,14 +10,14 @@ import { logIn, logInFailure } from '../../redux/actions/userStateActions';
 
 export const LogInForm = () => {
   const dispatch = useDispatch();
-  const errorMessage:string = useSelector((state:any) => state.userStateReducer.error);
+  const errorMessage = useSelector((state:any) => state.userStateReducer.error);
   const { register, handleSubmit, errors } = useForm();
 
   useEffect(() => {
     dispatch(logInFailure(''));
   }, []);
 
-  function logInUser(data:any): void {
+  function logInUser(data:Record<string,string>): void {
     dispatch(logIn(data.email, data.password));
   }
 

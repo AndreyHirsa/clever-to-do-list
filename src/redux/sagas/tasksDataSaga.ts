@@ -1,5 +1,6 @@
 import {
   call,
+  CallEffect,
   ForkEffect,
   put,
   takeEvery,
@@ -11,12 +12,13 @@ import {
 import { firebaseService, rsf } from '../../services/firebaseService';
 import { getData, getDataSuccess } from '../actions/getTasksDataActions';
 import { IUserData } from '../../interfaces/IUserData';
+import { TasksDataActionTypes } from '../../interfaces/ITodo';
 
 function* getDataSaga({
   payload: {
     userId, year, month, day,
   },
-}:any):any {
+}:any): any {
   try {
     const data = yield call(rsf.database.read, `${userId}/${year}/${month}/${day}/`);
 
@@ -42,7 +44,6 @@ function* patchDataSaga({
 
 function* saveTasksDataSaga({ payload }:any):any {
   try {
-    // console.log(payload);
     yield call(firebaseService.saveTasksDataService(payload));
   } catch (error) {
     console.log(error);
