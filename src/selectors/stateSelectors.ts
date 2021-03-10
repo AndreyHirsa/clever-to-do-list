@@ -6,5 +6,4 @@ export const useUserState = () => useSelector((state) => state.userStateReducer.
 export const useUserDataState = () => useSelector((state) => state.userDataReducer);
 export const useSignUpState = () => useSelector((state) => state.signUpReducer);
 export const useTasksDataState = () => useSelector((state) => state.tasksDataReducer);
-export const useSignUpError = () => useSelector((state) => state.signUpReducer.error);
 export const useLoginError = () => useSelector((state) => state.userStateReducer.error);

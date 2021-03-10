@@ -1,5 +1,7 @@
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const RESET_MESSAGE = 'RESET_MESSAGE';
+export const SET_SIGN_UP_STATUS = 'SET_SIGN_UP_STATUS';
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 export const LOG_IN = 'LOG_IN';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';

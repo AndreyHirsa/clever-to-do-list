@@ -5,22 +5,25 @@ import { Link } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 import { useForm } from 'react-hook-form';
 import Alert from '@material-ui/lab/Alert';
-import { signUp, signUpFailure } from 'redux/actions/signUpActions';
-import { useSignUpError } from 'selectors/stateSelectors';
+import {
+  resetMessage,
+  signUp,
+} from 'redux/actions/signUpActions';
+import { useSignUpState } from 'selectors/stateSelectors';
 import styles from './style.module.css';
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
-  const errorMessage = useSignUpError();
   const { register, handleSubmit, errors } = useForm();
+  const { message } = useSignUpState();
 
   useEffect(() => {
-    if (errorMessage) dispatch(signUpFailure(''));
+    if (message.value) dispatch(resetMessage());
   }, []);
 
-  function signUpUser(data:Record<string, string>): void {
+  const signUpUser = (data:Record<string, string>): void => {
     dispatch(signUp(data.email, data.password));
-  }
+  };
 
   return (
     <div className={styles.formContainer}>
@@ -59,7 +62,7 @@ export const SignUpForm = () => {
           })}
         />
         {errors.password && <Alert severity="error">{errors.password.message}</Alert>}
-        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        {message.value && <Alert severity={message.type}>{message.value}</Alert>}
         <Button className={styles.buttonSubmit} type="submit">submit</Button>
       </form>
     </div>

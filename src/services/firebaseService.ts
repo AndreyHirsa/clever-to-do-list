@@ -12,8 +12,6 @@ const firebaseConfig = {
   appId: '1:161805012135:web:0b02d34bbeac8bfe531f82',
 };
 
-// console.log(process.env.REACT_APP_FIREBASE_AUTH_DOMAIN);
-
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export const firebaseService = {

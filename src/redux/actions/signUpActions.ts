@@ -1,5 +1,5 @@
-import { ISignUp, ISignUpFailure, SignUpActionsType } from 'interfaces/ISignUpActions';
-import { SIGN_UP, SIGN_UP_FAILURE, SIGN_UP_SUCCESS } from './constants';
+import { ISetSignUpStatus, ISignUp, SignUpActionsType } from 'interfaces/ISignUpActions';
+import { RESET_MESSAGE, SET_SIGN_UP_STATUS, SIGN_UP } from './constants';
 
 export const signUp = (
   email: ISignUp['payload']['email'],
@@ -12,12 +12,15 @@ export const signUp = (
   },
 });
 
-export const signUpSuccess = (): SignUpActionsType => ({
-  type: SIGN_UP_SUCCESS,
-  payload: true,
+export const resetMessage = ():SignUpActionsType => ({
+  type: RESET_MESSAGE,
+  payload: {
+    type: undefined,
+    value: null,
+  },
 });
 
-export const signUpFailure = (error:ISignUpFailure['payload']): SignUpActionsType => ({
-  type: SIGN_UP_FAILURE,
-  payload: error,
+export const setSignUpStatus = (data:ISetSignUpStatus['payload']):SignUpActionsType => ({
+  type: SET_SIGN_UP_STATUS,
+  payload: data,
 });

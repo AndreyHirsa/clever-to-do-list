@@ -1,4 +1,10 @@
-import { SIGN_UP, SIGN_UP_FAILURE, SIGN_UP_SUCCESS } from 'redux/actions/constants';
+import {
+  RESET_MESSAGE,
+  SET_SIGN_UP_STATUS,
+  SIGN_UP,
+} from 'redux/actions/constants';
+import { Color } from '@material-ui/lab';
+import { ISignUpInitialState } from './ISignUpInitialState';
 
 export interface ISignUp {
     type: typeof SIGN_UP;
@@ -8,14 +14,17 @@ export interface ISignUp {
     };
   }
 
-export interface ISignUpSuccess {
-    type: typeof SIGN_UP_SUCCESS;
-    payload:true;
-  }
-
-export interface ISignUpFailure {
-    type: typeof SIGN_UP_FAILURE
-    payload:null | string;
+export interface ISetSignUpStatus {
+    type: typeof SET_SIGN_UP_STATUS;
+    payload: ISignUpInitialState
 }
 
-export type SignUpActionsType = ISignUpSuccess | ISignUpFailure | ISignUp;
+export interface IResetMessage {
+    type: typeof RESET_MESSAGE;
+    payload:{
+      type:Color | undefined
+      value:string | null
+}
+}
+
+export type SignUpActionsType = ISetSignUpStatus | ISignUp | IResetMessage;

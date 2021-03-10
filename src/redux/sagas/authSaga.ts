@@ -12,8 +12,9 @@ import { rsf } from 'services/firebaseService';
 import {
   LOG_IN, SIGN_UP,
 } from 'redux/actions/constants';
-import { signUpFailure, signUpSuccess } from 'redux/actions/signUpActions';
 import { logInFailure, logInSuccess } from 'redux/actions/userStateActions';
+import { Color } from '@material-ui/lab';
+import { setSignUpStatus } from '../actions/signUpActions';
 
 function* createUserSaga({
   payload,
@@ -30,9 +31,21 @@ function* createUserSaga({
       payload.email,
       payload.password,
     );
-    yield put(signUpSuccess());
+    yield put(setSignUpStatus({
+      isSignedUp: true,
+      message: {
+        type: 'success',
+        value: 'You have successfully registered',
+      },
+    }));
   } catch (error) {
-    yield put(signUpFailure(error.message));
+    yield put(setSignUpStatus({
+      isSignedUp: false,
+      message: {
+        type: 'error',
+        value: error.message,
+      },
+    }));
   }
 }
 

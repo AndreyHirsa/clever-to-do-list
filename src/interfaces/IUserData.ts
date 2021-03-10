@@ -14,5 +14,4 @@ export interface IPatchUserData{
      type: typeof PATCH_USER_DATA,
      payload:IUserData
 }
-
-export type UserDataActionsType = any
+export type UserActionsType = IPatchUserData
