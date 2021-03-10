@@ -1,5 +1,5 @@
 import { GET_DATA, GET_DATA_FAILURE, GET_DATA_SUCCESS } from 'redux/actions/constants';
-import { IUserData } from './IUserData';
+import { IUserDataReducer } from './IUserDataReducer';
 
 export interface ITodo{
     value:string,
@@ -9,7 +9,7 @@ export interface ITodo{
 
 export interface IGetData{
     type:typeof GET_DATA,
-    payload:IUserData
+    payload:IUserDataReducer
 }
 
 export interface IGetDataSuccess{

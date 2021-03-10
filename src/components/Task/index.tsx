@@ -14,7 +14,7 @@ export const Task = React.memo(({ value, done, id }:ITodo) => {
     ...userData, taskId: id, value,
   };
 
-  const patchTasksData = ():void => {
+  const patchTasksData = () => {
     dispatch(patchData({ ...dataToPatch, done }));
     dispatch(getData(dataToPatch));
   };

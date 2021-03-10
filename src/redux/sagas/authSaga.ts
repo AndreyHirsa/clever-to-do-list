@@ -6,15 +6,14 @@ import {
   PutEffect,
   takeEvery,
 } from 'redux-saga/effects';
-import { ISignUp, SignUpActionsType } from 'interfaces/ISignUpActions';
-import { ILogIn, UserStateActionsType } from 'interfaces/IUserStateActions';
+import { ISignUp, SignUpActionsType } from 'interfaces/ISignUpReducer';
+import { ILogIn, UserStateActionsType } from 'interfaces/IUserStateReducer';
 import { rsf } from 'services/firebaseService';
 import {
   LOG_IN, SIGN_UP,
 } from 'redux/actions/constants';
 import { logInFailure, logInSuccess } from 'redux/actions/userStateActions';
-import { Color } from '@material-ui/lab';
-import { setSignUpStatus } from '../actions/signUpActions';
+import { setSignUpStatus } from 'redux/actions/signUpActions';
 
 function* createUserSaga({
   payload,

@@ -1,6 +1,5 @@
-import { SignUpActionsType } from 'interfaces/ISignUpActions';
-import { ISignUpInitialState } from 'interfaces/ISignUpInitialState';
 import { RESET_MESSAGE, SET_SIGN_UP_STATUS } from 'redux/actions/constants';
+import { ISignUpInitialState, SignUpActionsType } from 'interfaces/ISignUpReducer';
 
 export const signUpInitialState:ISignUpInitialState = {
   isSignedUp: false,

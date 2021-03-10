@@ -1,4 +1,4 @@
-import { ISetSignUpStatus, ISignUp, SignUpActionsType } from 'interfaces/ISignUpActions';
+import { ISetSignUpStatus, ISignUp, SignUpActionsType } from 'interfaces/ISignUpReducer';
 import { RESET_MESSAGE, SET_SIGN_UP_STATUS, SIGN_UP } from './constants';
 
 export const signUp = (

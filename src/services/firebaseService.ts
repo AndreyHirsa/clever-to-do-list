@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import ReduxSagaFirebase from 'redux-saga-firebase';
-import { IUserData } from 'interfaces/IUserData';
+import { IUserDataReducer } from 'interfaces/IUserDataReducer';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAKzGl_3aoBIQP2R-apxxC5IMiZGXZyc6g',
@@ -16,7 +16,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export const firebaseService = {
 
-  saveTasksDataService(userData:IUserData): any {
+  saveTasksDataService(userData:IUserDataReducer): any {
     try {
       firebase
         .database()

@@ -1,9 +1,9 @@
 import format from 'date-fns/format';
-import { IPatchUserData, IUserData, UserActionsType } from 'interfaces/IUserData';
+import { IPatchUserData, IUserDataReducer, UserActionsType } from 'interfaces/IUserDataReducer';
 
 import { PATCH_USER_DATA } from 'redux/actions/constants';
 
-const userDataInitialState:IUserData = {
+const userDataInitialState:IUserDataReducer = {
   userId: '',
   year: format(new Date(), 'yyy'),
   month: format(new Date(), 'MMMM'),
@@ -14,7 +14,7 @@ const userDataInitialState:IUserData = {
 };
 
 export const userDataReducer = (state = userDataInitialState, action:UserActionsType)
-:IUserData => {
+:IUserDataReducer => {
   switch (action.type) {
     case PATCH_USER_DATA:
       return { ...state, ...action.payload };

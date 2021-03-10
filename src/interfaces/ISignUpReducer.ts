@@ -4,7 +4,6 @@ import {
   SIGN_UP,
 } from 'redux/actions/constants';
 import { Color } from '@material-ui/lab';
-import { ISignUpInitialState } from './ISignUpInitialState';
 
 export interface ISignUp {
     type: typeof SIGN_UP;
@@ -13,6 +12,14 @@ export interface ISignUp {
       password: string;
     };
   }
+
+export interface ISignUpInitialState{
+    isSignedUp:false | true;
+    message:{
+        type:Color | undefined
+        value:string | null
+    }
+}
 
 export interface ISetSignUpStatus {
     type: typeof SET_SIGN_UP_STATUS;

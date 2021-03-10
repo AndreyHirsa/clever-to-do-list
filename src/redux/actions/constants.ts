@@ -1,14 +1,11 @@
 export const SIGN_UP = 'SIGN_UP';
-export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 export const RESET_MESSAGE = 'RESET_MESSAGE';
 export const SET_SIGN_UP_STATUS = 'SET_SIGN_UP_STATUS';
-export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 export const LOG_IN = 'LOG_IN';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
 export const LOG_OUT = 'LOG_OUT';
 export const SAVE_DATA = 'SAVE_DATA';
-export const SAVE_DATA_SUCCESS = 'SAVE_DATA_SUCCESS';
 export const SAVE_DATA_FAILURE = 'SAVE_DATA_FAILURE';
 export const GET_DATA = 'GET_DATA';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';

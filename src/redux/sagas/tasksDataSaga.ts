@@ -11,7 +11,7 @@ import {
 } from 'redux/actions/constants';
 import { firebaseService, rsf } from 'services/firebaseService';
 import { getDataSuccess } from 'redux/actions/getTasksDataActions';
-import { IUserData } from 'interfaces/IUserData';
+import { IUserDataReducer } from 'interfaces/IUserDataReducer';
 import { IGetData, ITodo, TasksDataActionTypes } from 'interfaces/ITodo';
 
 function* getDataSaga({
@@ -32,7 +32,7 @@ function* patchDataSaga({
   payload: {
     userId, taskId, year, month, day, done,
   },
-}: {payload: IUserData, type: string}): Generator<CallEffect<any>, void, unknown> {
+}: {payload: IUserDataReducer, type: string}): Generator<CallEffect<any>, void, unknown> {
   try {
     yield call(rsf.database.patch, `${userId}/${year}/${month}/${day}/${taskId}`, {
       done: !done,
@@ -42,7 +42,7 @@ function* patchDataSaga({
   }
 }
 
-function* saveTasksDataSaga({ payload }: {payload: IUserData, type: string})
+function* saveTasksDataSaga({ payload }: {payload: IUserDataReducer, type: string})
 : Generator<CallEffect<any>, void, unknown> {
   try {
     yield call(firebaseService.saveTasksDataService(payload));

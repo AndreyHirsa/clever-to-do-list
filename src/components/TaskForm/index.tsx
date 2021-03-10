@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { saveData } from 'redux/actions/saveTasksDataActions';
 import { patchUserData } from 'redux/actions/userDataActions';
@@ -11,7 +11,6 @@ export const TaskForm = () => {
   const [inputText, setInputText] = useState('');
 
   const generateId = () => String(new Date().getTime());
-
   const userDataToUpdate = { ...userData, taskId: generateId(), value: inputText };
 
   const inputTextHandler = (e: ChangeEvent<HTMLInputElement>) => {

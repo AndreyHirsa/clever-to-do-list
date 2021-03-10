@@ -2,6 +2,11 @@ import {
   LOG_IN, LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT,
 } from 'redux/actions/constants';
 
+export interface IUserInitialState{
+    user: null | Record<string, any>
+    error:null | string;
+}
+
 export interface ILogInSuccess {
     type: typeof LOG_IN_SUCCESS;
     payload:Record<string, unknown>;
