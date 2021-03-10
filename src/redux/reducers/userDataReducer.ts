@@ -1,7 +1,7 @@
 import format from 'date-fns/format';
-import { IUserData, UserDataActionsType } from '../../interfaces/IUserData';
+import { IUserData, UserDataActionsType } from 'interfaces/IUserData';
 
-import { PATCH_USER_DATA } from '../actions/constants';
+import { PATCH_USER_DATA } from 'redux/actions/constants';
 
 const userDataInitialState:IUserData = {
   userId: '',
@@ -13,7 +13,8 @@ const userDataInitialState:IUserData = {
   done: false,
 };
 
-export const userDataReducer = (state = userDataInitialState, action:UserDataActionsType):IUserData => {
+export const userDataReducer = (state = userDataInitialState, action:UserDataActionsType)
+:IUserData => {
   switch (action.type) {
     case PATCH_USER_DATA:
       return { ...state, ...action.payload };

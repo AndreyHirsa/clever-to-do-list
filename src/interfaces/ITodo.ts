@@ -1,5 +1,5 @@
-import { GET_DATA, GET_DATA_FAILURE, GET_DATA_SUCCESS } from "../redux/actions/constants";
-import { IUserData } from "./IUserData";
+import { GET_DATA, GET_DATA_FAILURE, GET_DATA_SUCCESS } from 'redux/actions/constants';
+import { IUserData } from './IUserData';
 
 export interface ITodo{
     value:string,

@@ -11,7 +11,8 @@ export const calendarBuild = (currentDay:Date):Date[][] => {
 
   while (isBefore(day, lastDay)) {
     calendar.push(Array(7)
-      .fill(0).map((item, key) => day = addDays(day, (!key && isEqual(startDay, day)) ? 0 : 1)));
+      .fill(0)
+      .map((item, key) => day = addDays(day, (!key && isEqual(startDay, day)) ? 0 : 1)));
   }
 
   return calendar;

@@ -1,9 +1,9 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Toolbar } from '@material-ui/core';
-import React from 'react';
-import { logOut } from '../../redux/actions/userStateActions';
-import { useUserState } from '../../selectors/stateSelectors';
+import { logOut } from 'redux/actions/userStateActions';
+import { useUserState } from 'selectors/stateSelectors';
 import styles from './style.module.css';
 
 export const HeaderNavigation = () => {

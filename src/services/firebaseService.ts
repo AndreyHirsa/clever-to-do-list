@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import ReduxSagaFirebase from 'redux-saga-firebase';
-import { IUserData } from '../interfaces/IUserData';
+import { IUserData } from 'interfaces/IUserData';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAKzGl_3aoBIQP2R-apxxC5IMiZGXZyc6g',
@@ -12,13 +12,15 @@ const firebaseConfig = {
   appId: '1:161805012135:web:0b02d34bbeac8bfe531f82',
 };
 
+// console.log(process.env.REACT_APP_FIREBASE_AUTH_DOMAIN);
+
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-export const firebaseService: any = {
+export const firebaseService = {
 
-  saveTasksDataService(userData: IUserData) {
+  saveTasksDataService(userData:IUserData): any {
     try {
-      return firebase
+      firebase
         .database()
         .ref()
         .child(`${userData.userId}`)
@@ -28,7 +30,7 @@ export const firebaseService: any = {
         .child(`${userData.taskId}`)
         .set({ value: userData.value, done: false, id: userData.taskId });
     } catch (error) {
-      return console.log(error.message);
+      console.log(error.message);
     }
   },
 };

@@ -1,6 +1,6 @@
-import { IUserInitialState } from '../../interfaces/IUserInitialState';
-import { UserStateActionsType } from '../../interfaces/IUserStateActions';
-import { LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT } from '../actions/constants';
+import { IUserInitialState } from 'interfaces/IUserInitialState';
+import { UserStateActionsType } from 'interfaces/IUserStateActions';
+import { LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT } from 'redux/actions/constants';
 
 export const userInitialState: IUserInitialState = { user: null, error: null };
 

@@ -1,7 +1,7 @@
 import { Route, Redirect } from 'react-router';
 import React from 'react';
-import { IRoute } from '../interfaces/IRoute';
-import { useUserState } from '../selectors/stateSelectors';
+import { IRoute } from 'interfaces/IRoute';
+import { useUserState } from 'selectors/stateSelectors';
 
 export const RedirectToTasksRoute = ({
   component,

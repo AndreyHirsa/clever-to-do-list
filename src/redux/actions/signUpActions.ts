@@ -1,4 +1,4 @@
-import { ISignUp, ISignUpFailure, SignUpActionsType } from '../../interfaces/ISignUpActions';
+import { ISignUp, ISignUpFailure, SignUpActionsType } from 'interfaces/ISignUpActions';
 import { SIGN_UP, SIGN_UP_FAILURE, SIGN_UP_SUCCESS } from './constants';
 
 export const signUp = (

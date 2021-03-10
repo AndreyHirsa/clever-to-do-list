@@ -1,4 +1,4 @@
-import { PATCH_USER_DATA } from "../redux/actions/constants";
+import { PATCH_USER_DATA } from 'redux/actions/constants';
 
 export interface IUserData{
      userId?:string,
@@ -15,5 +15,4 @@ export interface IPatchUserData{
      payload:IUserData
 }
 
-
-export type UserDataActionsType = IPatchUserData
+export type UserDataActionsType = any

@@ -1,7 +1,7 @@
+import { IUserData } from 'interfaces/IUserData';
 import { PATCH_DATA } from './constants';
-import { IUserData } from '../../interfaces/IUserData';
 
-export const patchData = (data:IUserData): {payload: IUserData, type: string} => ({
+export const patchData = (data:IUserData): {payload: IUserData, type: typeof PATCH_DATA} => ({
   type: PATCH_DATA,
   payload: data,
 });

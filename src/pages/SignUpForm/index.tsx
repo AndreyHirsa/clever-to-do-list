@@ -1,13 +1,13 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 import { useForm } from 'react-hook-form';
 import Alert from '@material-ui/lab/Alert';
+import { signUp, signUpFailure } from 'redux/actions/signUpActions';
+import { useSignUpError } from 'selectors/stateSelectors';
 import styles from './style.module.css';
-import { signUp, signUpFailure } from '../../redux/actions/signUpActions';
-import { useSignUpError } from '../../selectors/stateSelectors';
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import {
   ILogIn, ILogInFailure, ILogInSuccess, UserStateActionsType,
-} from '../../interfaces/IUserStateActions';
+} from 'interfaces/IUserStateActions';
 import {
   LOG_IN_SUCCESS, LOG_IN, LOG_OUT, LOG_IN_FAILURE,
 } from './constants';

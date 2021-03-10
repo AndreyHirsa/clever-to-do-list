@@ -6,14 +6,14 @@ import {
   PutEffect,
   takeEvery,
 } from 'redux-saga/effects';
-import { ISignUp, SignUpActionsType } from '../../interfaces/ISignUpActions';
-import { ILogIn, UserStateActionsType } from '../../interfaces/IUserStateActions';
-import { rsf } from '../../services/firebaseService';
+import { ISignUp, SignUpActionsType } from 'interfaces/ISignUpActions';
+import { ILogIn, UserStateActionsType } from 'interfaces/IUserStateActions';
+import { rsf } from 'services/firebaseService';
 import {
-  GET_DATA, LOG_IN, PATCH_DATA, SIGN_UP,
-} from '../actions/constants';
-import { signUpFailure, signUpSuccess } from '../actions/signUpActions';
-import { logInFailure, logInSuccess } from '../actions/userStateActions';
+  LOG_IN, SIGN_UP,
+} from 'redux/actions/constants';
+import { signUpFailure, signUpSuccess } from 'redux/actions/signUpActions';
+import { logInFailure, logInSuccess } from 'redux/actions/userStateActions';
 
 function* createUserSaga({
   payload,

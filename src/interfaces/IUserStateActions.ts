@@ -1,6 +1,6 @@
 import {
   LOG_IN, LOG_IN_FAILURE, LOG_IN_SUCCESS, LOG_OUT,
-} from '../redux/actions/constants';
+} from 'redux/actions/constants';
 
 export interface ILogInSuccess {
     type: typeof LOG_IN_SUCCESS;

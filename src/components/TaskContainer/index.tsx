@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Task } from '../Task';
-import { TaskForm } from '../TaskForm';
+import { useDispatch } from 'react-redux';
+import { TaskForm } from 'components/TaskForm';
+import { Task } from 'components/Task';
+import { useTasksDataState, useUserDataState, useUserState } from 'selectors/stateSelectors';
+import { getData } from 'redux/actions/getTasksDataActions';
+import { patchUserData } from 'redux/actions/userDataActions';
+import { ITodo } from 'interfaces/ITodo';
 import styles from './style.module.css';
-import { useTasksDataState, useUserDataState, useUserState } from '../../selectors/stateSelectors';
-import { getData } from '../../redux/actions/getTasksDataActions';
-import { patchUserData } from '../../redux/actions/userDataActions';
-import { ITodo } from '../../interfaces/ITodo';
 
-export const TasksContainer = () => {
+export const TasksContainer:React.FC = () => {
   const userState = useUserState();
   const userData = useUserDataState();
   const data = useTasksDataState();
@@ -19,7 +19,6 @@ export const TasksContainer = () => {
   }, [userState]);
 
   useEffect(() => {
-    if (userData.userId) dispatch(getData(userData));
     dispatch(getData(userData));
   }, [userData]);
 
@@ -27,7 +26,14 @@ export const TasksContainer = () => {
     <div className={styles.taskContainer}>
       <TaskForm />
       <div className={styles.container}>
-        {data.map((todo:ITodo) => <Task key={todo.id} id={todo.id} value={todo.value} done={todo.done} />)}
+        {data.map((todo:ITodo) => (
+          <Task
+            key={todo.id}
+            id={todo.id}
+            value={todo.value}
+            done={todo.done}
+          />
+        ))}
       </div>
     </div>
   );

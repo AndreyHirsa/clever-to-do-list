@@ -1,4 +1,4 @@
-import { SIGN_UP, SIGN_UP_FAILURE, SIGN_UP_SUCCESS } from '../redux/actions/constants';
+import { SIGN_UP, SIGN_UP_FAILURE, SIGN_UP_SUCCESS } from 'redux/actions/constants';
 
 export interface ISignUp {
     type: typeof SIGN_UP;

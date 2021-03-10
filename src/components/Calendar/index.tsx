@@ -2,13 +2,13 @@ import format from 'date-fns/format';
 import {
   add, isBefore, isSameDay, sub,
 } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { useDispatch } from 'react-redux';
+import { patchUserData } from 'redux/actions/userDataActions';
 import { calendarBuild } from './build';
 import styles from './style.module.css';
-import { patchUserData } from '../../redux/actions/userDataActions';
 
 export const Calendar = () => {
   const [calendar, setCalendar] = useState<Date[][]>([]);
@@ -16,7 +16,6 @@ export const Calendar = () => {
   const [calendarDate, setCalendarDate] = useState(new Date());
 
   const dispatch = useDispatch();
-
   useEffect(() => {
     setCalendar(calendarBuild(calendarDate));
   }, [calendarDate]);
@@ -48,13 +47,11 @@ export const Calendar = () => {
   const currYear = format(calendarDate, 'yyy');
 
   const prevMonth = () => {
-    const newDate = sub(calendarDate, { months: 1 });
-    setCalendarDate(newDate);
+    setCalendarDate((prevDate) => sub(prevDate, { months: 1 }));
   };
 
   const nextMonth = () => {
-    const newDate = add(calendarDate, { months: 1 });
-    setCalendarDate(newDate);
+    setCalendarDate((prevDate) => add(prevDate, { months: 1 }));
   };
 
   return (
@@ -68,7 +65,7 @@ export const Calendar = () => {
       </div>
       <div className={styles.calendar}>
         <div className={styles.dayNames}>
-          {['M', 'T', 'W', 'T', 'F', 'S','S'].map((day) => <div>{day}</div>)}
+          {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day) => <div>{day}</div>)}
         </div>
         {
             calendar.map((week:Date[]) => (

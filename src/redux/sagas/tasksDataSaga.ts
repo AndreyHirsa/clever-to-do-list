@@ -5,15 +5,14 @@ import {
   put,
   PutEffect,
   takeEvery,
-  takeLatest,
 } from 'redux-saga/effects';
 import {
-  GET_DATA, PATCH_DATA, PATCH_USER_DATA, SAVE_DATA,
-} from '../actions/constants';
-import { firebaseService, rsf } from '../../services/firebaseService';
-import { getData, getDataSuccess } from '../actions/getTasksDataActions';
-import { IUserData } from '../../interfaces/IUserData';
-import { IGetData, ITodo, TasksDataActionTypes } from '../../interfaces/ITodo';
+  GET_DATA, PATCH_DATA, SAVE_DATA,
+} from 'redux/actions/constants';
+import { firebaseService, rsf } from 'services/firebaseService';
+import { getDataSuccess } from 'redux/actions/getTasksDataActions';
+import { IUserData } from 'interfaces/IUserData';
+import { IGetData, ITodo, TasksDataActionTypes } from 'interfaces/ITodo';
 
 function* getDataSaga({
   payload: {
@@ -43,7 +42,8 @@ function* patchDataSaga({
   }
 }
 
-function* saveTasksDataSaga({ payload }: {payload: IUserData, type: string}): Generator<CallEffect<unknown>, void, unknown> {
+function* saveTasksDataSaga({ payload }: {payload: IUserData, type: string})
+: Generator<CallEffect<any>, void, unknown> {
   try {
     yield call(firebaseService.saveTasksDataService(payload));
   } catch (error) {

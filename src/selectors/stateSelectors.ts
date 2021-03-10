@@ -1,5 +1,5 @@
 import { createSelectorHook } from 'react-redux';
-import { RootState } from '../interfaces/RootStateType';
+import { RootState } from 'interfaces/RootStateType';
 
 export const useSelector = createSelectorHook<RootState>();
 export const useUserState = () => useSelector((state) => state.userStateReducer.user);

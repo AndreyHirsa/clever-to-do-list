@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { saveData } from 'redux/actions/saveTasksDataActions';
+import { patchUserData } from 'redux/actions/userDataActions';
+import { useUserDataState } from 'selectors/stateSelectors';
 import styles from './style.module.css';
-import { saveData } from '../../redux/actions/saveTasksDataActions';
-import { patchUserData } from '../../redux/actions/userDataActions';
-import { useUserDataState } from '../../selectors/stateSelectors';
 
 export const TaskForm = () => {
   const dispatch = useDispatch();
