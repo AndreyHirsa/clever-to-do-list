@@ -8,7 +8,7 @@ import {
 } from 'redux-saga/effects';
 import { ISignUp, SignUpActionsType } from 'interfaces/ISignUpReducer';
 import { ILogIn, UserStateActionsType } from 'interfaces/IUserStateReducer';
-import { rsf } from 'services/firebaseService';
+import { rsf } from 'firebase/firebaseConfig';
 import {
   LOG_IN, SIGN_UP,
 } from 'redux/actions/constants';

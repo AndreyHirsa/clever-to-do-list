@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { ITodo } from 'interfaces/ITodo';
-import { getData, patchData } from 'redux/actions/getTasksDataActions';
+import { ITasksDataReducer } from 'interfaces/ITasksDataReducer';
+import { getData, patchData } from 'redux/actions/tasksDataActions';
 import { useUserDataState } from 'selectors/stateSelectors';
 import styles from './style.module.css';
 
-export const Task = React.memo(({ value, done, id }:ITodo) => {
+export const Task = React.memo(({ value, done, id }:ITasksDataReducer) => {
   const userData = useUserDataState();
   const dispatch = useDispatch();
 

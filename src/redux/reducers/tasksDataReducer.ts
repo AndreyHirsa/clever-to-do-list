@@ -1,4 +1,4 @@
-import { ITasksDataInitialState, TasksDataActionTypes } from 'interfaces/ITodo';
+import { ITasksDataInitialState, TasksDataActionTypes } from 'interfaces/ITasksDataReducer';
 import {
   GET_DATA, GET_DATA_FAILURE, GET_DATA_SUCCESS, PATCH_DATA_FAILURE, PATCH_DATA_SUCCESS, SAVE_DATA_FAILURE, SAVE_DATA_SUCCESS,
 } from 'redux/actions/constants';
@@ -11,9 +11,9 @@ export const tasksDataReducer = (state = tasksInitialState, action:TasksDataActi
     case GET_DATA:
       return { ...state, isFetching: true };
     case GET_DATA_SUCCESS:
-      return { ...state, data: action.payload, isFetching: false };
+      return { data: action.payload, isFetching: false, hasError: false };
     case GET_DATA_FAILURE:
-      return { ...state, data: action.payload, isFetching: false };
+      return { data: action.payload, isFetching: false, hasError: true };
     case PATCH_DATA_SUCCESS:
       return { ...state, ...action.payload };
     case PATCH_DATA_FAILURE:

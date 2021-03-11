@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 import ReduxSagaFirebase from 'redux-saga-firebase';
-import { IUserDataReducer } from 'interfaces/IUserDataReducer';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAKzGl_3aoBIQP2R-apxxC5IMiZGXZyc6g',
@@ -13,24 +12,5 @@ const firebaseConfig = {
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-
-export const firebaseService = {
-
-  saveTasksDataService: async (userData:IUserDataReducer) => {
-    try {
-      firebase
-        .database()
-        .ref()
-        .child(`${userData.userId}`)
-        .child(`${userData.year}`)
-        .child(`${userData.month}`)
-        .child(`${userData.day}`)
-        .child(`${userData.taskId}`)
-        .set({ value: userData.value, done: false, id: userData.taskId });
-    } catch (error) {
-      console.log(error.message);
-    }
-  },
-};
 
 export const rsf = new ReduxSagaFirebase(firebaseApp);

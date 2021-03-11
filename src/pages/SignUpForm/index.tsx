@@ -21,7 +21,7 @@ export const SignUpForm = () => {
     if (message.value) dispatch(resetMessage());
   }, []);
 
-  const signUpUser = (data:Record<string, string>): void => {
+  const signUpUser = (data:Record<string, string>) => {
     dispatch(signUp(data.email, data.password));
   };
 

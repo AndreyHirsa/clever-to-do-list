@@ -1,4 +1,4 @@
-import { IPatchUserData, IUserDataReducer, UserActionsType } from 'interfaces/IUserDataReducer';
+import { IPatchUserData, UserActionsType } from 'interfaces/IUserDataReducer';
 import { PATCH_USER_DATA } from './constants';
 
 export const patchUserData = (data:IPatchUserData['payload']):UserActionsType => ({

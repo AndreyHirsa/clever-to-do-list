@@ -13,7 +13,7 @@ const userDataInitialState:IUserDataReducer = {
   done: false,
 };
 
-export const userDataReducer = (state = userDataInitialState, action:any)
+export const userDataReducer = (state = userDataInitialState, action:UserActionsType)
 :IUserDataReducer => {
   switch (action.type) {
     case PATCH_USER_DATA:

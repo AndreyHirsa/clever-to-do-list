@@ -2,16 +2,15 @@ import {
   GET_DATA, GET_DATA_FAILURE, GET_DATA_SUCCESS, PATCH_DATA, PATCH_DATA_FAILURE, PATCH_DATA_SUCCESS, SAVE_DATA, SAVE_DATA_FAILURE, SAVE_DATA_SUCCESS,
 } from 'redux/actions/constants';
 import { IUserDataReducer } from './IUserDataReducer';
-import { IUserInitialState } from './IUserStateReducer';
 
-export interface ITodo{
+export interface ITasksDataReducer{
     value:string,
     id:string,
     done:boolean
 }
 
 export interface ITasksDataInitialState{
-    data:ITodo[],
+    data:ITasksDataReducer[],
     isFetching:boolean,
     hasError:boolean
 }
@@ -23,7 +22,7 @@ export interface IGetData{
 
 export interface IGetDataSuccess{
     type:typeof GET_DATA_SUCCESS,
-    payload:ITodo[],
+    payload:ITasksDataReducer[],
 }
 
 export interface IGetDataFailure{
@@ -33,7 +32,7 @@ export interface IGetDataFailure{
 
 export interface IPatchData{
     type: typeof PATCH_DATA,
-    payload:IUserInitialState
+    payload:IUserDataReducer
 }
 
 export interface IPatchDataSuccess{

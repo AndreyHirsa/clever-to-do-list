@@ -1,11 +1,11 @@
-import React, { useEffect, SyntheticEvent, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { TaskForm } from 'components/TaskForm';
 import { Task } from 'components/Task';
 import { useTasksDataState, useUserDataState, useUserState } from 'selectors/stateSelectors';
-import { getData } from 'redux/actions/getTasksDataActions';
+import { getData } from 'redux/actions/tasksDataActions';
 import { patchUserData } from 'redux/actions/userDataActions';
-import { ITodo } from 'interfaces/ITodo';
+import { ITasksDataReducer } from 'interfaces/ITasksDataReducer';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Snackbar } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
@@ -23,7 +23,7 @@ export const TasksContainer:React.FC = () => {
   }, [userState]);
 
   useEffect(() => {
-    dispatch(getData(userData));
+    if (userData.userId) dispatch(getData(userData));
   }, [userData]);
 
   useEffect(() => (hasError ? setOpen(true) : setOpen(false)), [data]);
@@ -36,7 +36,7 @@ export const TasksContainer:React.FC = () => {
     <div className={styles.taskContainer}>
       <TaskForm />
       <div className={styles.container}>
-        {data.map((todo:ITodo) => (
+        {data.map((todo:ITasksDataReducer) => (
           <Task
             key={todo.id}
             id={todo.id}

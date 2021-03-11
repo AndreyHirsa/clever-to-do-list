@@ -1,4 +1,4 @@
-import { PATCH_DATA_FAILURE, PATCH_USER_DATA } from 'redux/actions/constants';
+import { PATCH_USER_DATA } from 'redux/actions/constants';
 
 export interface IUserDataReducer{
      userId?:string,

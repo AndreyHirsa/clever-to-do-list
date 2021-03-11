@@ -1,7 +1,7 @@
 import {
   IGetData,
-  IGetDataFailure, IGetDataSuccess, IPatchDataFailure, IPatchDataSuccess, ISaveData, TasksDataActionTypes,
-} from 'interfaces/ITodo';
+  IGetDataFailure, IGetDataSuccess, IPatchData, ISaveData, TasksDataActionTypes,
+} from 'interfaces/ITasksDataReducer';
 import { IUserDataReducer } from 'interfaces/IUserDataReducer';
 import {
   GET_DATA, GET_DATA_FAILURE, GET_DATA_SUCCESS, PATCH_DATA, PATCH_DATA_FAILURE, PATCH_DATA_SUCCESS, SAVE_DATA,
@@ -29,7 +29,7 @@ export const patchDataSuccess = ():TasksDataActionTypes => ({
   },
 });
 
-export const patchData = (data:IUserDataReducer) => ({
+export const patchData = (data:IPatchData['payload']):TasksDataActionTypes => ({
   type: PATCH_DATA,
   payload: data,
 });
