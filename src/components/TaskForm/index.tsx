@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { saveData } from 'redux/actions/saveTasksDataActions';
+import { saveData } from 'redux/actions/getTasksDataActions';
 import { patchUserData } from 'redux/actions/userDataActions';
 import { useUserDataState } from 'selectors/stateSelectors';
 import styles from './style.module.css';

@@ -3,8 +3,15 @@
     min-height: 400px;
     margin-right: 50px;
     background-color: white;
+    position: relative;
 }
 
 .container{
     border-top: 1px solid #9699a3;
+}
+
+.animation{
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
 }

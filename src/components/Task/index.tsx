@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { patchData } from 'redux/actions/patchTasksDataActions';
 import { ITodo } from 'interfaces/ITodo';
-import { getData } from 'redux/actions/getTasksDataActions';
+import { getData, patchData } from 'redux/actions/getTasksDataActions';
 import { useUserDataState } from 'selectors/stateSelectors';
 import styles from './style.module.css';
 

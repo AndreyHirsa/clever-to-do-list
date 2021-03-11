@@ -14,7 +14,7 @@ export interface ISignUp {
   }
 
 export interface ISignUpInitialState{
-    isSignedUp:false | true;
+    isSignedUp:boolean;
     message:{
         type:Color | undefined
         value:string | null

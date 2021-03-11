@@ -16,7 +16,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export const firebaseService = {
 
-  saveTasksDataService(userData:IUserDataReducer): any {
+  saveTasksDataService: async (userData:IUserDataReducer) => {
     try {
       firebase
         .database()
