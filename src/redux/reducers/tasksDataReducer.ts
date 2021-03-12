@@ -1,6 +1,11 @@
 import { ITasksDataInitialState, TasksDataActionTypes } from 'interfaces/ITasksDataReducer';
 import {
-  GET_DATA, GET_DATA_FAILURE, GET_DATA_SUCCESS, PATCH_DATA_FAILURE, PATCH_DATA_SUCCESS, SAVE_DATA_FAILURE, SAVE_DATA_SUCCESS,
+  GET_DATA,
+  GET_DATA_FAILURE,
+  GET_DATA_SUCCESS,
+  PATCH_DATA_FAILURE,
+  PATCH_DATA_SUCCESS, SAVE_DATA_FAILURE,
+  SAVE_DATA_SUCCESS,
 } from 'redux/actions/constants';
 
 const tasksInitialState:ITasksDataInitialState = { data: [], isFetching: false, hasError: false };

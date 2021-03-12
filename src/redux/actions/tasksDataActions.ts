@@ -2,9 +2,13 @@ import {
   IGetData,
   IGetDataFailure, IGetDataSuccess, IPatchData, ISaveData, TasksDataActionTypes,
 } from 'interfaces/ITasksDataReducer';
-import { IUserDataReducer } from 'interfaces/IUserDataReducer';
 import {
-  GET_DATA, GET_DATA_FAILURE, GET_DATA_SUCCESS, PATCH_DATA, PATCH_DATA_FAILURE, PATCH_DATA_SUCCESS, SAVE_DATA,
+  GET_DATA,
+  GET_DATA_FAILURE,
+  GET_DATA_SUCCESS,
+  PATCH_DATA,
+  PATCH_DATA_FAILURE, PATCH_DATA_SUCCESS,
+  SAVE_DATA,
 } from './constants';
 
 export const getData = (data:IGetData['payload']):TasksDataActionTypes => ({

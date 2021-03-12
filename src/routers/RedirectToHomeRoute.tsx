@@ -7,7 +7,7 @@ export const RedirectHomeRoute = ({
   component,
   path,
   exact,
-}: IRoute): JSX.Element => {
+}: IRoute) => {
   const user = useUserState();
   return user ? (
     <Route path={path} exact={exact} component={component} />

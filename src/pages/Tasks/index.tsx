@@ -8,5 +8,4 @@ export const Tasks:React.FC = () => (
     <TasksContainer />
     <Calendar />
   </div>
-
 );

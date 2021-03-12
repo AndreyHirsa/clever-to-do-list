@@ -1,5 +1,5 @@
 import format from 'date-fns/format';
-import { IPatchUserData, IUserDataReducer, UserActionsType } from 'interfaces/IUserDataReducer';
+import { IUserDataReducer, UserActionsType } from 'interfaces/IUserDataReducer';
 
 import { PATCH_USER_DATA } from 'redux/actions/constants';
 

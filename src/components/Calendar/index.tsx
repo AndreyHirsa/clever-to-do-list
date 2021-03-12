@@ -1,8 +1,9 @@
+import React, { useEffect, useState } from 'react';
 import format from 'date-fns/format';
 import {
   add, isBefore, isSameDay, sub,
 } from 'date-fns';
-import { useEffect, useState } from 'react';
+
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { useDispatch } from 'react-redux';
@@ -57,11 +58,17 @@ export const Calendar = () => {
   return (
     <div className={styles.body}>
       <div className={styles.header}>
-        <ArrowLeftIcon onClick={prevMonth} className={styles.icon} />
+        <ArrowLeftIcon
+          onClick={prevMonth}
+          className={styles.icon}
+        />
         <div>
           {`${currMonth} ${currYear}`}
         </div>
-        <ArrowRightIcon onClick={nextMonth} className={styles.icon} />
+        <ArrowRightIcon
+          onClick={nextMonth}
+          className={styles.icon}
+        />
       </div>
       <div className={styles.calendar}>
         <div className={styles.dayNames}>
@@ -72,7 +79,12 @@ export const Calendar = () => {
               <div className={styles.days}>
                 {
                 week.map((day:Date) => (
-                  <button type="button" disabled={isSelected(day)} className={styles.day} onClick={() => updateDay(day)}>
+                  <button
+                    type="button"
+                    disabled={isSelected(day)}
+                    className={styles.day}
+                    onClick={() => updateDay(day)}
+                  >
                     <div className={dayStyles(day)}>{format(day, 'd')}</div>
                   </button>
                 ))

@@ -10,7 +10,12 @@ import {
   GET_DATA, PATCH_DATA, SAVE_DATA,
 } from 'redux/actions/constants';
 import {
-  getDataFailure, getDataSuccess, patchDataFailure, patchDataSuccess, saveDataFailure, saveDataSuccess,
+  getDataFailure,
+  getDataSuccess,
+  patchDataFailure,
+  patchDataSuccess,
+  saveDataFailure,
+  saveDataSuccess,
 } from 'redux/actions/tasksDataActions';
 import {
   IGetData, IPatchData, ISaveData, TasksDataActionTypes,

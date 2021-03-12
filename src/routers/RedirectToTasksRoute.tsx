@@ -7,7 +7,7 @@ export const RedirectToTasksRoute = ({
   component,
   path,
   exact,
-}: IRoute): JSX.Element => {
+}: IRoute) => {
   const user = useUserState();
   return user ? (
     <Redirect to="/tasks" />
