@@ -7,16 +7,16 @@ import { tasksDataReducer } from './tasksDataReducer';
 import { userDataReducer } from './userDataReducer';
 
 const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['userStateReducer'],
+    key: 'root',
+    storage,
+    whitelist: ['userStateReducer'],
 };
 
 const rootReducer = combineReducers({
-  signUpReducer,
-  userStateReducer,
-  tasksDataReducer,
-  userDataReducer,
+    signUpReducer,
+    userStateReducer,
+    tasksDataReducer,
+    userDataReducer,
 });
 
 export const persistedRootReducer = persistReducer(persistConfig, rootReducer);

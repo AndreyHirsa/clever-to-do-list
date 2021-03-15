@@ -7,8 +7,10 @@ import { userDataWatcher } from 'redux/sagas/tasksDataSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store:any = createStore(persistedRootReducer,
-  applyMiddleware(sagaMiddleware));
+export const store: any = createStore(
+    persistedRootReducer,
+    applyMiddleware(sagaMiddleware)
+);
 
 export const persistor = persistStore(store);
 

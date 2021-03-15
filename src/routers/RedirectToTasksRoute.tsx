@@ -4,14 +4,14 @@ import { IRoute } from 'interfaces/IRoute';
 import { useUserState } from 'selectors/stateSelectors';
 
 export const RedirectToTasksRoute = ({
-  component,
-  path,
-  exact,
-}: IRoute) => {
-  const user = useUserState();
-  return user ? (
-    <Redirect to="/tasks" />
-  ) : (
-    <Route path={path} exact={exact} component={component} />
-  );
+    component,
+    path,
+    exact,
+}: IRoute): JSX.Element => {
+    const user = useUserState();
+    return user ? (
+        <Redirect to="/tasks" />
+    ) : (
+        <Route path={path} exact={exact} component={component} />
+    );
 };
