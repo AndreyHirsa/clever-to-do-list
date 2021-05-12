@@ -35,9 +35,13 @@ export const Calendar = (): JSX.Element => {
 
     const dayStyles = (day: Date) => {
         if (isToday(day)) return styles.today;
-        if (isBeforeToday(day) && day === currentDay)
-            return `${styles.before} ${styles.selected}`;
-        if (isBeforeToday(day)) return styles.before;
+        if (isBeforeToday(day)){
+            if(day === currentDay){
+                return `${styles.before} ${styles.selected}`;
+            }else{
+                return styles.before;
+            }
+        }
         if (isSelected(day)) return styles.selected;
         return '';
     };

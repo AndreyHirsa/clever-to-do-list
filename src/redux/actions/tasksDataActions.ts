@@ -1,4 +1,5 @@
 import {
+    IDeleteData,
     IGetData,
     IGetDataFailure,
     IGetDataSuccess,
@@ -7,6 +8,8 @@ import {
     TasksDataActionTypes,
 } from 'interfaces/ITasksDataReducer';
 import {
+    DELETE_DATA, DELETE_DATA_FAILURE,
+    DELETE_DATA_SUCCESS,
     GET_DATA,
     GET_DATA_FAILURE,
     GET_DATA_SUCCESS,
@@ -55,6 +58,28 @@ export const patchDataFailure = (): TasksDataActionTypes => ({
         hasError: true,
     },
 });
+
+export const deleteDataSuccess = (): TasksDataActionTypes => ({
+    type: DELETE_DATA_SUCCESS,
+    payload: {
+        hasError: false,
+    },
+});
+
+export const deleteData = (
+    data: IDeleteData['payload']
+): TasksDataActionTypes => ({
+    type: DELETE_DATA,
+    payload: data,
+});
+
+export const deleteDataFailure = (): TasksDataActionTypes => ({
+    type: DELETE_DATA_FAILURE,
+    payload: {
+        hasError: true,
+    },
+});
+
 
 export const saveData = (data: ISaveData['payload']): TasksDataActionTypes => ({
     type: SAVE_DATA,

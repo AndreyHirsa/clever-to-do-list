@@ -1,4 +1,7 @@
 import {
+    DELETE_DATA,
+    DELETE_DATA_FAILURE,
+    DELETE_DATA_SUCCESS,
     GET_DATA,
     GET_DATA_FAILURE,
     GET_DATA_SUCCESS,
@@ -57,6 +60,25 @@ export interface IPatchDataFailure {
   };
 }
 
+export interface IDeleteData {
+    type: typeof DELETE_DATA;
+    payload: IUserDataReducer;
+}
+
+export interface IDeleteDataSuccess {
+    type: typeof DELETE_DATA_SUCCESS;
+    payload: {
+        hasError: false;
+    };
+}
+
+export interface IDeleteDataFailure {
+    type: typeof DELETE_DATA_FAILURE;
+    payload: {
+        hasError: true;
+    };
+}
+
 export interface ISaveData {
   type: typeof SAVE_DATA;
   payload: IUserDataReducer;
@@ -77,6 +99,9 @@ export interface ISaveDataFailure {
 }
 
 export type TasksDataActionTypes =
+  | IDeleteData
+  | IDeleteDataSuccess
+  | IDeleteDataFailure
   | IGetDataSuccess
   | IGetData
   | IGetDataFailure

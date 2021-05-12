@@ -6,8 +6,10 @@ import {
     PutEffect,
     takeEvery,
 } from 'redux-saga/effects';
-import { GET_DATA, PATCH_DATA, SAVE_DATA } from 'redux/actions/constants';
+import {DELETE_DATA, GET_DATA, PATCH_DATA, SAVE_DATA} from 'redux/actions/constants';
 import {
+    deleteDataFailure,
+    deleteDataSuccess,
     getDataFailure,
     getDataSuccess,
     patchDataFailure,
@@ -16,6 +18,7 @@ import {
     saveDataSuccess,
 } from 'redux/actions/tasksDataActions';
 import {
+    IDeleteData,
     IGetData,
     IPatchData,
     ISaveData,
@@ -73,6 +76,23 @@ function* patchDataSaga({
     }
 }
 
+function* deleteDataSaga({
+    payload: { userId, taskId, year, month, day },
+}: IDeleteData): Generator<
+    CallEffect<unknown> | PutEffect<TasksDataActionTypes>,
+    void,
+    unknown
+    > {
+    try {
+        yield call(
+            rsf.database.delete,
+            `${userId}/${year}/${month}/${day}/${taskId}`);
+        yield put(deleteDataSuccess());
+    } catch (error) {
+        yield put(deleteDataFailure());
+    }
+}
+
 function* saveTasksDataSaga({
     payload: { userId, year, month, day, value },
 }: ISaveData): Generator<
@@ -92,6 +112,7 @@ function* saveTasksDataSaga({
 }
 
 export function* userDataWatcher(): Generator<ForkEffect<never>, void> {
+    yield takeEvery(DELETE_DATA, deleteDataSaga);
     yield takeEvery(GET_DATA, getDataSaga);
     yield takeEvery(PATCH_DATA, patchDataSaga);
     yield takeEvery(SAVE_DATA, saveTasksDataSaga);

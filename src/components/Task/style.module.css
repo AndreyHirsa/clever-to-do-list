@@ -10,17 +10,24 @@
 .description{
     width: 100%;
 }
- 
 
 .done{
   width: 100%;
   text-decoration: line-through;
 }
   
-  .completed {
+.completed {
     text-decoration: line-through;
     color: #9699a3;
-  }
+}
+
+.buttonDelete{
+    color: red;
+}
+
+.buttonContainer{
+    display: flex;
+}
 
 .taskContainer{
     padding: 0 10px 0 10px;
@@ -31,6 +38,11 @@
 }
 
 i{
+    cursor: pointer;
     transition: 0.2s;
     font-size: 20px;
+}
+
+i:first-child{
+    margin-right: 15px;
 }

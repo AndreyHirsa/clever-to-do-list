@@ -17,7 +17,6 @@ function* createUserSaga({
     payload,
 }: ISignUp): Generator<
   | CallEffect<unknown>
-  | PutEffect<SignUpActionsType>
   | PutEffect<SignUpActionsType>,
   void,
   string
@@ -54,7 +53,6 @@ function* loginSaga({
     payload,
 }: ILogIn): Generator<
   | CallEffect<unknown>
-  | PutEffect<UserStateActionsType>
   | PutEffect<UserStateActionsType>,
   void,
   Record<string, unknown>

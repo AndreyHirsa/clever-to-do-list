@@ -7,7 +7,6 @@ import { useForm } from 'react-hook-form';
 import Alert from '@material-ui/lab/Alert';
 import { logIn, logInFailure } from 'redux/actions/userStateActions';
 import { useLoginError } from 'selectors/stateSelectors';
-import styles from './style.module.css';
 
 export const LogInForm = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -23,46 +22,52 @@ export const LogInForm = (): JSX.Element => {
     }
 
     return (
-        <div className={styles.formContainer}>
-            <form onSubmit={handleSubmit(logInUser)} className={styles.form}>
+        <div className={'formContainer'}>
+            <form onSubmit={handleSubmit(logInUser)} className={'form'}>
                 <h3>LOG IN</h3>
-                <Link to="/">
-                    <button type="button" className={styles.close}>
-                        <CloseIcon className={styles.closeIcon} />
+                <Link to="/home_page">
+                    <button type="button" className={'close'}>
+                        <CloseIcon className={'closeIcon'} />
                     </button>
                 </Link>
-                <TextField
-                    className={styles.formInput}
-                    label="Email"
-                    variant="outlined"
-                    name="email"
-                    inputRef={register({
-                        required: 'Required',
-                        pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: 'invalid email address',
-                        },
-                    })}
-                />
-                {errors.email && <Alert severity="error">{errors.email.message}</Alert>}
-                <TextField
-                    label="Password"
-                    variant="outlined"
-                    type="password"
-                    name="password"
-                    inputRef={register({
-                        required: 'Required',
-                        minLength: {
-                            value: 8,
-                            message: 'must be 8 characters at least',
-                        },
-                    })}
-                />
-                {errors.password && (
-                    <Alert severity="error">{errors.password.message}</Alert>
-                )}
-                {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
-                <Button className={styles.buttonSubmit} type="submit">
+                <div className={'fieldContainer'}>
+                    <TextField
+                        fullWidth
+                        className={'formInput'}
+                        label="Email"
+                        variant="outlined"
+                        name="email"
+                        inputRef={register({
+                            required: 'Required',
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: 'invalid email address',
+                            },
+                        })}
+                    />
+                    {errors.email && <Alert severity="error">{errors.email.message}</Alert>}
+                </div>
+                <div className={'fieldContainer'}>
+                    <TextField
+                        fullWidth
+                        label="Password"
+                        variant="outlined"
+                        type="password"
+                        name="password"
+                        inputRef={register({
+                            required: 'Required',
+                            minLength: {
+                                value: 8,
+                                message: 'must be 8 characters at least',
+                            },
+                        })}
+                    />
+                    {errors.password && (
+                        <Alert severity="error">{errors.password.message}</Alert>
+                    )}
+                    {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+                </div>
+                <Button className={'buttonSubmit'} type="submit">
           submit
                 </Button>
             </form>

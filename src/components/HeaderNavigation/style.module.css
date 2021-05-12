@@ -3,15 +3,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
-    background-color: blueviolet;
+    padding: 10px 30px;
+    background-color: transparent;
 }
 
 .buttonContainer{
     display: flex;
 }
 
-.buttonRedirect{
+.headerButton{
+    transition: 0.2s;
+    font-weight: 700;
     cursor: pointer;
     outline: none;
     width: 100px;
@@ -19,6 +21,10 @@
     border-radius: 10px;
     border: none;
     margin-right: 10px;
+}
+
+.headerButton:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 

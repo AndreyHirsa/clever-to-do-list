@@ -3,6 +3,7 @@ import {
     TasksDataActionTypes,
 } from 'interfaces/ITasksDataReducer';
 import {
+    DELETE_DATA_FAILURE, DELETE_DATA_SUCCESS,
     GET_DATA,
     GET_DATA_FAILURE,
     GET_DATA_SUCCESS,
@@ -32,6 +33,10 @@ export const tasksDataReducer = (
     case PATCH_DATA_SUCCESS:
         return { ...state, ...action.payload };
     case PATCH_DATA_FAILURE:
+        return { ...state, ...action.payload };
+    case DELETE_DATA_SUCCESS:
+        return { ...state, ...action.payload };
+    case DELETE_DATA_FAILURE:
         return { ...state, ...action.payload };
     case SAVE_DATA_SUCCESS:
         return { ...state, ...action.payload };
